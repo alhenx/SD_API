@@ -1,31 +1,42 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
+
 import os
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from werkzeug import secure_filename
-import twitter
+import tweepy
 
 def oauth_login():
     CONSUMER_KEY = 'FrmCRULEy54WAJyEEzslKBlQf'
     CONSUMER_SECRET = 'TaFwRAtW96yYxfHG54ct4VWyZ3re7tzm8odAJziHlewBsjqGcS'
-    OAUTH_TOKEN = '2985454685-oOOuCI4UHUlvmmWok5YToIDRReqwq0epCauRmxC'
-    OAUTH_TOKEN_SECRET = 'WIzKDbwqZsKJrxtzI9RwCFAhP7WP85etO4mOZDpL29Aji'
+    ACCESS_KEY = '2985454685-oOOuCI4UHUlvmmWok5YToIDRReqwq0epCauRmxC'
+    ACCESS_SECRET = 'WIzKDbwqZsKJrxtzI9RwCFAhP7WP85etO4mOZDpL29Aji'
 
-    auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 
-    twitter_api = twitter.Twitter(auth=auth)
-    return twitter_api
+    twit = tweepy.API(auth)
+    return twit
 
 def twittear_estado_img(estado):
     twit = oauth_login() 
     status = estado
-    with open("uploads/foto.jpg", "rb") as imagefile:
-        params = {"media[]": imagefile.read(), "status": status}
-        twit.statuses.update_with_media(**params)
+    fn = os.path.abspath('uploads/foto.jpg')
+    twit.update_with_media(fn, status=status)
 
 def twittear_estado(estado):
     twit = oauth_login() 
-    twit.statuses.update(status=estado)
+    twit.update_status(status=estado)
+
+'''
+#TWITTER + DRIVE
+def twitter_drive():
+
+#DRIVE
+def subir_drive():
+
+
+'''
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -80,15 +91,19 @@ def upload_sta():
     estado = request.form['estado']
     twittear_estado(estado)
     return index()
-
+'''
+#TWITTER + DRIVE
 @app.route('/uploadtwdrive', methods=['POST'])
 def upload_twdrive():
-    print("pene")
+    twittear_drive();
+    return index()
 
+#DRIVE
 @app.route('/uploaddrive', methods=['POST'])
 def upload_drive():
-    print("pene")
-
+    subir_drive();
+    return index()
+'''
 
 if __name__ == "__main__":
     app.run(debug=True)
