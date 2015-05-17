@@ -104,6 +104,7 @@ def index_jsontw():
 
 @app.route('/vertw')
 def vertw():  
+    render_template("vertw.html")
     return render_template("vertw.html")
 
 @app.route('/uploadimg', methods=['POST'])

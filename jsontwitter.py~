@@ -1,0 +1,18 @@
+import urllib2
+import json
+import tweepy
+
+CONSUMER_KEY ='FrmCRULEy54WAJyEEzslKBlQf'
+CONSUMER_SECRET = 'TaFwRAtW96yYxfHG54ct4VWyZ3re7tzm8odAJziHlewBsjqGcS'
+ACCESS_KEY = '2985454685-oOOuCI4UHUlvmmWok5YToIDRReqwq0epCauRmxC' 
+ACCESS_SECRET = 'WIzKDbwqZsKJrxtzI9RwCFAhP7WP85etO4mOZDpL29Aji'
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+twit = tweepy.API(auth)
+usuario = raw_input("Nombre de usuario deseado: ")
+numero = raw_input("Cantidad de tweets: ")
+#userid = twit.users.show(screen_name=usuario)['id'] #Consigue la id del usuario que elegimos
+datos = twit.user_timeline(sceen_name=usuario, count=numero) #Escoge los tweets del usuario elegido y la cantidad de tweets
+
+for tweet in datos:
+	print tweet['text'] 

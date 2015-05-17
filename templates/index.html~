@@ -46,7 +46,6 @@
 				<a href="twitterimg"><button type="button" class="btn btn-primary">Twittear foto</button></a>
 				<a href="twitterdrive"><button type="button" class="btn btn-primary">Twittear foto + almacenar Drive</button></a>
 				<a href="drive"><button type="button" class="btn btn-primary">Almacenar Drive</button></a>
-				<a href="jsontw"><button type="button" class="btn btn-primary">Ver estado Twitter</button></a>
 			</div>
 		</section>
 		<br>
