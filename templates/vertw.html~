@@ -23,31 +23,8 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 	<!-- Google fonts end here -->
 </head>
-<body>
-  <script type="text/javascript">
-//Ocultar/Mostrar Div's
-OCULTO="none";
-VISIBLE="block";
-  function mostrar1(blo) {
-    document.getElementById(blo).style.display=VISIBLE;
-    document.getElementById('ver_off1').style.display=VISIBLE;
-    document.getElementById('ver_on1').style.display=OCULTO;
-    }
-  function ocultar1(blo) {
-    document.getElementById(blo).style.display=OCULTO;
-    document.getElementById('ver_off1').style.display=OCULTO;
-    document.getElementById('ver_on1').style.display=VISIBLE;
-    }
-</script>
-
-<div id="ver_on1"><h1 id="titu"><a href="#" onclick="mostrar1('bloque1')" title="Expandir info">Expandir</a></h1>
-<p class="copete">Haga click en el t&iacute;tulo para axpandir la informaci&oacute;n</p>
-</div>
-<div id="ver_off1" style="display: none"><h1><a href="#" onclick="ocultar1('bloque1')" title="Cerrar info">Contraer</a></h1>
-</div>
-<div id="bloque1" style="display: none">
-<p id="txt">Texto oculto que ahora se ve :)</p>
-</div> 
+<body >
+  
 <!-- About Icon start here -->
 	<div class="about-us"> 
 		<a href="#" class="fa fa-file-text-o tool-tip" data-toggle="modal" data-target=".bs-example-modal-lg" data-placement="right" title="About"></a>
@@ -67,7 +44,7 @@ VISIBLE="block";
 			<form class="contact-form col-md-6 fade-down validate" enctype="multipart/form-data">
 				<div class="form-group">
 					<div>
-						<a href="#" onClick="location.reload();">Recargar</a>
+						<h2 style="color:#FFFFFF"> Pulse F5 para ver la información actualizada</h2><br>
                         <h1 style="color:#FFFFFF"><object data="../static/txt/tuits.txt" width="700" height="500"></object></h1>
                         
 					</div>

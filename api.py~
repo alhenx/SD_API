@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 from werkzeug import secure_filename
 import tweepy
 import twitter
-import time
+import pytumblr
 
 
 def oauth_login():
@@ -50,15 +50,24 @@ def ver_estado(nombre,num):
         f.write(tuit+'\n') 
     f.close()
 
-'''
-#TWITTER + DRIVE
-def twitter_drive():
-
-#DRIVE
-def subir_drive():
+    
 
 
-'''
+def subir_tumblr():
+    consumer_key = '6XuUsNVBhpF3I2gkXMTq8jkmoTZYQvp16LsHGCFGBV7X5ObOQW'
+    consumer_secret = 'FpChhkP29A8tTxlYgQCCakWwO6Ibx2HX8CmiRj8dyHOFWL5efN'
+    token_key = 'FlrqWswNK29GrHAisl5RuE3xRU0tZBHJMmG8r6DUzcWNGS0OxL' 
+    token_secret = 'uGKcyOIQ2BrcgFDLsAv6sBrWoesO6ZU63mmR6MTPJXM5tom8qx'
+
+    client = pytumblr.TumblrRestClient(
+        consumer_key,
+        consumer_secret,
+        token_key,
+        token_secret
+    )
+    fn = os.path.abspath('uploads/foto.jpg')
+    client.create_photo('sd2015blog', state="published", tags=["SD"], data=fn)
+
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -90,13 +99,13 @@ def index_img():
 def index_sta():
     return render_template('twittersta.html')
 
-@app.route('/twitterdrive')
-def index_twdrive():
-    return render_template('twitterdrive.html')
+@app.route('/twittertumblr')
+def index_twtumblr():
+    return render_template('twittertumblr.html')
 
-@app.route('/drive')
-def index_drive():
-    return render_template('drive.html')
+@app.route('/tumblr')
+def index_tumblr():
+    return render_template('tumblr.html')
 
 @app.route('/jsontw')
 def index_jsontw():
@@ -104,7 +113,6 @@ def index_jsontw():
 
 @app.route('/vertw')
 def vertw():  
-    render_template("vertw.html")
     return render_template("vertw.html")
 
 @app.route('/uploadimg', methods=['POST'])
@@ -130,19 +138,28 @@ def ver_sta():
     ver_estado(nombre,2)
     #return index_jsontw()
     return vertw()
-'''
-#TWITTER + DRIVE
-@app.route('/uploadtwdrive', methods=['POST'])
-def upload_twdrive():
-    twittear_drive();
-    return index()
 
-#DRIVE
-@app.route('/uploaddrive', methods=['POST'])
-def upload_drive():
-    subir_drive();
-    return index()
-'''
+@app.route('/uploadtwtumblr', methods=['POST'])
+def upload_twtumblr():
+    file = request.files['file']
+    estado = request.form['estado']
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'foto.jpg'))
+        twittear_estado_img(estado)
+        subir_tumblr()
+        return index()
+
+
+@app.route('/uploadtumblr', methods=['POST'])
+def upload_tumblr():
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'foto.jpg'))
+        subir_tumblr()
+        return index()
+
 
 if __name__ == "__main__":
     app.run(debug=True)

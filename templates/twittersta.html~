@@ -63,14 +63,10 @@
     <a href="#" class="fa fa-times cls-pop" data-dismiss="modal"></a>
     <div class="modal-dialog modal-lg clearfix">
       <div class="modal-content pop-up">
-        <h3>Proyecto de API Sistemas Distribuidos</h3>
+        <h3>Información</h3>
         <div class="clearfix">
         <div>
-            <p>Alumnos responsables:</p>
-            <p>Alejandro Chacón</p>
-            <p>Antonio Gambín </p>
-            <p>Francisco José Pastor</p>
-            <p>Iván Ruiz</p>
+          <p>Un proyecto to reshulon</p>
           
         </div>
       </div> 
