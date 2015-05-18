@@ -11,6 +11,7 @@ Así con nuestra plataforma, tendremos un servicio automatizado, donde poder esc
 ---
 ####Opciones disponibles que ofrece nuestra API
   - Actualizar el estado de Twitter
+  - Visualizar los dos últimos tweet de una cuenta
   - Subir una imagen a Tumblr
   - Subir un tweet con una imagen
   - Subir un tweet con una imagen y esa misma imagen subirla automáticamente a Tumblr
