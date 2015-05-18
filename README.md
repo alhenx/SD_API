@@ -14,7 +14,8 @@ Así con nuestra plataforma, tendremos un servicio automatizado, donde poder esc
   - Subir una imagen a Tumblr
   - Subir un tweet con una imagen
   - Subir un tweet con una imagen y esa misma imagen subirla automáticamente a Tumblr
-___
+
+---
 
 ####Integrantes
  - Francisco José Pastor Aznar
